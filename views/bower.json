@@ -1,0 +1,21 @@
+{
+  "name": "kurl",
+  "version": "0.0.1",
+  "authors": [
+    "Kyriakos Georgiou <kyriakos@cs.toronto.edu>"
+  ],
+  "description": "kurl URL Shortener",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "http://kg.gg",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.8"
+  }
+}
