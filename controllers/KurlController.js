@@ -1,6 +1,6 @@
 var shortid = require('shortid'),
     couchdb = require('../interfaces/CouchInterface.js'),
-    config  = require('../../config');
+    config  = require('../config');
 
 var KurlController = {
 

@@ -1,6 +1,6 @@
 var app = angular.module('kurl', []);
 
-var SERVER_URL = "http://localhost:3000/v1";
+var SERVER_URL = "http://localhost:3000";
 
 app.controller('ShorteningController', ['$scope', '$http', function($scope, $http) {
 

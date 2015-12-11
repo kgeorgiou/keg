@@ -1,4 +1,4 @@
-var config = require('../../config'),
+var config = require('../config'),
     nano = require('nano')(config.couchdb.server_url),
     kurl_db = nano.db.use(config.couchdb.db_name);
 
