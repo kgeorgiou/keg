@@ -86,7 +86,7 @@ var KurlController = {
         var hash = req.params.hash;
 
         couchdb.retrieveDocument(hash, function (err, data) {
-            if (err || !data) {
+            if (err || !data || !data.long_url) {
                 res.send(req.url + ' not found.');
                 return;
             }
@@ -104,7 +104,15 @@ var KurlController = {
             req.hash = hash;
             next();
 
-            res.redirect(data.long_url);
+            var longUrl = data.long_url;
+
+            var re = new RegExp(/^([a-zA-Z]{1,10}:)?\/\//);
+
+            if (!re.test(longUrl)) {
+                longUrl = '//' + longUrl;
+            }
+
+            res.redirect(301, longUrl);
         });
     }
 };
