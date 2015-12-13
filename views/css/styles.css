@@ -3,22 +3,23 @@
     src: url("../../fonts/bt_mono_Regular.otf") format("opentype");
 }
 
-html {
+html, body {
     font-family: Helvetica, sans-serif;
-    background: #4d9de0;
     height: 100%;
     padding: 0;
-    margin: 0;
     overflow-x: hidden;
+    background: #4d9de0;
 }
 
 body {
-    padding-top: 48px;
+    min-width: 310px;
 }
 
 h2 {
     color: white;
-    font-weight: 200;
+    font-weight: 400;
+    margin-top: 64px;
+    padding: 0 10px;
 }
 
 h2 a {
@@ -28,6 +29,7 @@ h2 a {
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     font-family: bt_mono, sans-serif;
     font-size: 1.1em;
+    font-weight: bold;
 }
 
 h2 a:hover {
@@ -35,18 +37,18 @@ h2 a:hover {
     border-bottom: 2px solid rgba(255, 255, 255, 1);
 }
 
-.container .shorten-button {
+.container-1 .shorten-button {
     padding: 10px 26px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-.container .shorten-button:hover {
+.container-1 .shorten-button:hover {
     background-color: #4fb67d;
     box-shadow: inset 0px -2px 0 0 #46996b;
 }
 
-.container .shorten-button {
+.container-1 .shorten-button {
     position: absolute;
     z-index: 2;
     right: 0;
@@ -69,16 +71,29 @@ h2 a:hover {
     white-space: nowrap;
 }
 
-.container {
+.container-1 {
     width: 532px;
-    margin: 48px auto 37px;
+    margin: 37px auto 37px;
     position: relative;
 }
 
-@media screen and (max-width: 533px) {
-    .container {
-        width: 95%;
-    }
+.container-2 {
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
+}
+
+.container-3 {
+    width: 532px;
+    margin: 30px auto 20px auto;
+    position: relative;
+}
+
+.container-4 {
+    width: 532px;
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
 }
 
 .input-url-long {
@@ -125,4 +140,65 @@ h2 a:hover {
     text-align: center;
     box-shadow: 0px 2px 0 0 #4fb67d;
     font-size: 1.7em;
+}
+
+.md-body-1 {
+    color: white;
+    font-weight: 600;
+}
+
+.flex-container {
+    margin-right: 20px !important;
+    max-width: 12% !important;
+}
+
+.layout-row {
+    margin: 10px 0;
+}
+
+.expiry-string {
+    color: white;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.timer-icon {
+    font-size: 2em;
+    color: white;
+    border: 0;
+    padding: 9px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.timer-icon-on {
+    background-color: #69cb95;
+    box-shadow: inset 0 -2px 0 0 #4fb67d;
+}
+
+.timer-icon-off {
+    background-color: #F4528C;
+    box-shadow: inset 0 -2px 0 0 #EA4287;
+}
+
+.slider-row {
+    width: 532px;
+}
+
+@media screen and (max-width: 533px) {
+    .container-1, .container-3, .container-4 {
+        width: 95%;
+    }
+    .input-url-short {
+        font-size: 1.2em;
+    }
+    .md-body-1 {
+        font-size: 12px;
+    }
+
+    .expiry-string {
+        color: white;
+        font-size: 12px;
+    }
 }

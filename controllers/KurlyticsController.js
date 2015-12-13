@@ -1,10 +1,10 @@
 var TrackingUtils = require('../utils/TrackingUtils'),
-    Couch = require('../interfaces/CouchInterface.js'),
-    Utils = require('../utils/Utils.js');
+    Couch         = require('../interfaces/CouchInterface.js'),
+    Utils         = require('../utils/Utils.js');
 
 var KurlyticsController = {
 
-    recordHit: function(req, res) {
+    recordHit: function (req, res) {
         var id = Utils.createMetricsId(req.hash);
 
         Couch.retrieveDocument(id, function (err, doc) {
@@ -30,17 +30,31 @@ var KurlyticsController = {
         });
     },
 
-    recordCreation: function(req, res) {
+    recordCreation: function (req, res) {
         var doc_id = Utils.createMetricsId(req.hash);
+
+        if (!doc_id || doc_id.length == 0) {
+            // TODO: Log error.
+            return;
+        }
+
+        var lifeSpan = req.life_span;
+
         var creator_agent = TrackingUtils.getUserAgent(req);
 
-        Couch.insertDocument(doc_id, {
+        var document = {
             doc_type: 'metrics',
             created_at: Date.now(),
             creator_agent: creator_agent,
             clicks: 0,
             visitor_agents: []
-        }, function(err, data) {
+        };
+
+        if (lifeSpan !== undefined && lifeSpan !== null) {
+            document['life_span'] = lifeSpan;
+        }
+
+        Couch.insertDocument(doc_id, document, function (err, data) {
             if (err) {
                 console.log(err)
             }

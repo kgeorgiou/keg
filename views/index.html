@@ -5,9 +5,18 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kyriakos Georgiou">
-    <meta name="description" content="kurl, URL Shortener.">
+    <meta name="description" content="Kurl, URL Shortener.">
 
     <script src="bower_components/angularjs/angular.min.js" type="application/javascript"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc5/angular-material.min.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc7/angular-material.min.js"></script>
 
     <script src="build/js/kurl.min.js" type="application/javascript"></script>
     <link href="build/css/kurl.min.css" rel="stylesheet" type="text/css">
@@ -15,16 +24,43 @@
 
 <body>
 
-<div ng-controller="ShorteningController">
-    <h2 align="center">kurl: An open <a href="//github.com/kgeorgiou/kurl" target="_blank">source</a> URL shortener.</h2>
-
-    <div class="container">
+<div ng-controller="ShorteningController" ng-cloak>
+    <h2 align="center">Kurl: An open <a href="//github.com/kgeorgiou/kurl" target="_blank">source</a> URL shortener.</h2>
+    <div class="container-1">
         <input name="longUrl" class="input-url-long" placeholder="Enter long URL" size="2048"
                autocomplete="off" ng-model="longUrl" required>
         <a class="shorten-button" ng-click="shortenUrl()">Shorten</a>
     </div>
-
-    <div class="container" ng-show="shortUrlExists()">
+    <div class="container-2">
+        <div class="expiry-string">{{getExpiryString()}}</div>
+        <i class="material-icons timer-icon" ng-class="expiry.flag ? 'timer-icon-on' : 'timer-icon-off'" ng-click="toggleExpiryFlag()">timer</i>
+    </div>
+    <div class="container-3" ng-show="expiry.flag">
+        <div layout>
+            <div class="flex-container" flex="10" layout layout-align="left center">
+                <span class="md-body-1">Minutes</span>
+            </div>
+            <md-slider flex md-discrete ng-model="expiry.expMinutes" step="1" min="0" max="59" va aria-label="minutes">
+            </md-slider>
+        </div>
+        <div layout>
+            <div class="flex-container" flex="10" layout layout-align="left center">
+                <span class="md-body-1">Hours</span>
+            </div>
+            <md-slider flex class="md-warn" md-discrete ng-model="expiry.expHours" step="1" min="0" max="23"
+                       aria-label="hours">
+            </md-slider>
+        </div>
+        <div layout>
+            <div class="flex-container" flex="10" layout layout-align="left center">
+                <span class="md-body-1">Days</span>
+            </div>
+            <md-slider flex class="md-primary" md-discrete ng-model="expiry.expDays" step="1" min="0" max="365"
+                       aria-label="days">
+            </md-slider>
+        </div>
+    </div>
+    <div class="container-4" ng-show="shortUrlExists()">
         <input name="shortUrl" class="input-url-short" placeholder="" size="24" autocomplete="off"
                ng-model="shortUrl">
     </div>
