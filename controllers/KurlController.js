@@ -85,13 +85,21 @@ var KurlController = {
     expand: function (req, res, next) {
         var hash = req.params.hash;
 
+        if (!hash || hash.length == 0) {
+            return;
+        }
+
         couchdb.retrieveDocument(hash, function (err, data) {
             if (err || !data || !data.long_url) {
                 res.send(req.url + ' not found.');
                 return;
             }
 
+            var redirectStatus = 301;
+
             if (data.expires_at) {
+                redirectStatus = 302;
+
                 var expTime = new Date(data.expires_at);
                 var now = new Date();
 
@@ -112,7 +120,7 @@ var KurlController = {
                 longUrl = '//' + longUrl;
             }
 
-            res.redirect(301, longUrl);
+            res.redirect(redirectStatus, longUrl);
         });
     }
 };
