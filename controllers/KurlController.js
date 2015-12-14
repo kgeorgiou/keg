@@ -24,7 +24,7 @@ var KurlController = {
         var hash = shortid.generate();
 
         var document = {
-            doc_type: 'short_to_long',
+            doc_type: 'long_url',
             long_url: longUrl
         };
 
