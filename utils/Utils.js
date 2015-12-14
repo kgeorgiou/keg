@@ -7,10 +7,6 @@ var Utils = {
         }
 
         return str + delim + 'metrics'
-    },
-
-    hasExpires : function(timestamp) {
-        return false;
     }
 };
 
