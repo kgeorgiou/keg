@@ -8,7 +8,7 @@ var express     = require('express'),
     router      = require('./Router.js');
 
 server.listen(config.server.port, function () {
-    console.info('kurl listening on port: ' + config.server.port);
+    console.info('keg listening on port: ' + config.server.port);
     console.info('app.env: ', app.get('env'));
 });
 

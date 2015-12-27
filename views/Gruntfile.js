@@ -10,20 +10,20 @@ module.exports = function (grunt) {
                     'app.js',
                     'controllers/*.js'
                 ],
-                dest: 'build/js/kurl.js'
+                dest: 'build/js/keg.js'
             },
             css: {
                 src: [
                     'css/*.css'
                 ],
-                dest: 'build/css/kurl.css'
+                dest: 'build/css/keg.css'
             }
         },
 
         uglify: {
             js: {
-                src: 'build/js/kurl.js',
-                dest: 'build/js/kurl.min.js'
+                src: 'build/js/keg.js',
+                dest: 'build/js/keg.min.js'
             }
         },
 

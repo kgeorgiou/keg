@@ -8,7 +8,14 @@ html, body {
     height: 100%;
     padding: 0;
     overflow-x: hidden;
+}
+
+.body-blue {
     background: #4d9de0;
+}
+
+.body-gray {
+    background: #A59B7A;
 }
 
 body {
@@ -18,12 +25,26 @@ body {
 h2 {
     color: white;
     font-weight: 400;
-    margin-top: 64px;
     padding: 0 10px;
 }
 
-h2 a {
+a {
     text-decoration: none;
+    outline-style: none;
+}
+
+#logo-container {
+    width: 100%;
+    text-align: center;
+    margin: 60px 0 10px 0;
+
+}
+
+#pint-icon {
+    margin-top: 12px;
+}
+
+h2 a {
     color: white;
     padding: 0 0 1px 0;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -43,17 +64,11 @@ h2 a:hover {
     border-bottom-right-radius: 5px;
 }
 
-.container-1 .shorten-button:hover {
-    background-color: #4fb67d;
-    box-shadow: inset 0px -2px 0 0 #46996b;
-}
-
 .container-1 .shorten-button {
     position: absolute;
     z-index: 2;
     right: 0;
     top: 0;
-    background-color: #69cb95;
     height: 30px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -63,7 +78,6 @@ h2 a:hover {
     line-height: 1.875rem;
     text-decoration: none;
     color: #fff;
-    box-shadow: inset 0 -2px 0 0 #4fb67d;
     box-sizing: content-box;
     border: 0;
     outline: none;
@@ -96,7 +110,7 @@ h2 a:hover {
     position: relative;
 }
 
-.input-url-long {
+#input-url-long {
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -117,11 +131,11 @@ h2 a:hover {
     background-clip: padding-box;
 }
 
-.input-url-short {
+#input-url-short {
     display: block;
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 4px solid #69cb95;
+    border-bottom: 4px solid #BD801A;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -138,7 +152,7 @@ h2 a:hover {
     background-clip: padding-box;
     background: none;
     text-align: center;
-    box-shadow: 0px 2px 0 0 #4fb67d;
+    box-shadow: 0 2px 0 0 #AC6D03;
     font-size: 1.7em;
 }
 
@@ -163,23 +177,15 @@ h2 a:hover {
 }
 
 .timer-icon {
-    font-size: 2em;
     color: white;
     border: 0;
-    padding: 9px 26px;
+    padding: 7px 26px;
     border-radius: 5px;
     box-sizing: content-box;
     margin-top: 20px;
     cursor: pointer;
-}
-.timer-icon-on {
-    background-color: #69cb95;
-    box-shadow: inset 0 -2px 0 0 #4fb67d;
-}
-
-.timer-icon-off {
-    background-color: #F4528C;
-    box-shadow: inset 0 -2px 0 0 #EA4287;
+    display: inline-block;
+    outline-style: none;
 }
 
 .slider-row {
@@ -190,15 +196,58 @@ h2 a:hover {
     .container-1, .container-3, .container-4 {
         width: 95%;
     }
+
     .input-url-short {
         font-size: 1.2em;
     }
+
     .md-body-1 {
         font-size: 12px;
     }
 
     .expiry-string {
         color: white;
-        font-size: 12px;
+        font-size: 14px;
     }
 }
+
+.btn-brown {
+    background-color: #BD801A;
+    box-shadow: inset 0 -2px 0 0 #AC6D03;
+}
+
+.btn-brown:hover {
+    background-color: #AF6E03;
+    box-shadow: inset 0px -2px 0 0 #9D5A00;
+}
+
+.btn-yellow {
+    background-color: #F4980c;
+    box-shadow: inset 0 -2px 0 0 #da7900;
+}
+
+.btn-yellow:hover {
+    background-color: #FDB714;
+    box-shadow: inset 0 -2px 0 0 #F4980c;
+}
+
+.btn-green {
+    background-color: #69cb95;
+    box-shadow: inset 0 -2px 0 0 #4fb67d;
+}
+
+.btn-green:hover {
+    background-color: #4fb67d;
+    box-shadow: inset 0px -2px 0 0 #46996b;
+}
+
+.btn-pink {
+    background-color: #F4528C;
+    box-shadow: inset 0 -2px 0 0 #EA4287;
+}
+
+.btn-pink:hover {
+    background-color: #EA4287;
+    box-shadow: inset 0 -2px 0 0 #E32A75;
+}
+

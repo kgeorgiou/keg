@@ -1,9 +1,8 @@
-var shortid = require('shortid'),
-    couchdb = require('../interfaces/CouchInterface.js'),
-    config  = require('../config'),
+var couchdb = require('../interfaces/CouchInterface.js'),
+    config  = require('../config.js'),
     Utils   = require('../utils/Utils.js');
 
-var KurlController = {
+var KegController = {
 
     shorten: function (req, res, next) {
         var longUrl = req.body.long_url;
@@ -19,10 +18,6 @@ var KurlController = {
             return;
         }
 
-        /* There are more efficient and smarter ways to produce short and unique hashes
-        for the long urls but for now we'll be using the shortid package */
-        var hash = shortid.generate();
-
         var document = {
             doc_type: 'long_url',
             long_url: longUrl
@@ -32,6 +27,7 @@ var KurlController = {
 
             req.life_span = lifeSpan;
 
+            /* If expiry timestamp is missing, derive it from the lifespan */
             if (expiryTimestamp !== undefined && expiryTimestamp !== null) {
                 document['expires_at'] = expiryTimestamp;
             } else {
@@ -39,33 +35,35 @@ var KurlController = {
             }
         }
 
-        couchdb.insertDocument(hash, document, function (err, data) {
+        couchdb.generateShortId(function (pint) {
+            couchdb.insertDocument(pint, document, function (err, data) {
 
-            if (err) {
+                if (err) {
+                    res.json({
+                        status: 'error',
+                        error: err
+                    });
+                    return;
+                }
+
+                req.pint = pint;
+                next();
+
+                var shortUrl = config.server.url + pint;
                 res.json({
-                    status: 'err',
-                    error: err
-                });
-                return;
-            }
-
-            req.hash = hash;
-            next();
-
-            var shortUrl = config.server.url + hash;
-            res.json({
-                status: 'ok',
-                short_url: shortUrl,
-                long_url: longUrl
-            })
+                    status: 'ok',
+                    short_url: shortUrl,
+                    long_url: longUrl
+                })
+            });
         });
 
     },
 
     lookup: function (req, res) {
-        var hash = req.params.hash;
+        var pint = req.params.pint;
 
-        couchdb.retrieveDocument(hash, function (err, data) {
+        couchdb.retrieveDocument(pint, function (err, data) {
             if (err) {
                 res.json({
                     status: 'error',
@@ -76,20 +74,20 @@ var KurlController = {
 
             res.json({
                 status: 'ok',
-                short_url: hash,
+                short_url: pint,
                 long_url: data.long_url
             })
         });
     },
 
     expand: function (req, res, next) {
-        var hash = req.params.hash;
+        var pint = req.params.pint;
 
-        if (!hash || hash.length == 0) {
+        if (!pint || pint.length == 0) {
             return;
         }
 
-        couchdb.retrieveDocument(hash, function (err, data) {
+        couchdb.retrieveDocument(pint, function (err, data) {
             if (err || !data || !data.long_url) {
                 res.send(req.url + ' not found.');
                 return;
@@ -109,20 +107,15 @@ var KurlController = {
                 }
             }
 
-            req.hash = hash;
+            req.pint = pint;
             next();
 
             var longUrl = data.long_url;
-
-            var re = new RegExp(/^([a-zA-Z]{1,10}:)?\/\//);
-
-            if (!re.test(longUrl)) {
-                longUrl = '//' + longUrl;
-            }
+            longUrl = Utils.prependScheme(longUrl);
 
             res.redirect(redirectStatus, longUrl);
         });
     }
 };
 
-module.exports = KurlController;
+module.exports = KegController;

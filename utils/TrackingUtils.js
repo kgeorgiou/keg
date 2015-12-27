@@ -3,6 +3,11 @@ var useragent = require('useragent');
 var TrackingUtils = {
     getUserAgent: function (req) {
         var agent = useragent.parse(req.headers['user-agent']);
+
+        if (!agent) {
+            return null;
+        }
+
         return {
             browser: {
                 family: agent.family,

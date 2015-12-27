@@ -1,12 +1,12 @@
 {
-  "name": "kurl",
+  "name": "keg",
   "version": "0.0.1",
   "authors": [
     "Kyriakos Georgiou <kyriakos@cs.toronto.edu>"
   ],
-  "description": "kurl URL Shortener",
+  "description": "Keg URL Shortener",
   "main": "app.js",
-  "license": "MIT",
+  "license": "GPLv2",
   "homepage": "http://kg.gg",
   "ignore": [
     "**/.*",
@@ -17,6 +17,6 @@
   ],
   "dependencies": {
     "angularjs": "~1.4.8",
-    "material-design-lite": "~1.0.6"
+    "angular-material": "~1.0.0"
   }
 }

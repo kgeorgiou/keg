@@ -1,16 +1,16 @@
 {
-  "name": "kurl",
+  "name": "keg",
   "version": "0.0.1",
-  "description": "kurl - URL shortener",
+  "description": "Keg - URL shortener",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.14.1",
     "crypto": "0.0.3",
     "dotenv": "^1.2.0",
+    "expect.js": "^0.3.1",
     "express": "^4.13.3",
     "express-useragent": "^0.2.2",
     "nano": "^6.1.5",
-    "shortid": "^2.2.4",
     "useragent": "^2.1.7"
   },
   "devDependencies": {
@@ -20,5 +20,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kyriakos Georgiou",
-  "license": "ISC"
+  "license": "GPLv2"
 }

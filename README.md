@@ -1,5 +1,5 @@
-# Kurl
-Kurl: An open source URL shortener.
+# Keg
+Keg: An open source URL shortener.
 
 # Getting Started
 
@@ -32,10 +32,10 @@ NODE_ENV=development
 SERVER_URL=http://localhost:3000/
 SERVER_PORT=3000
 COUCHDB_URL=http://localhost:5984
-COUCHDB_NAME=kurl_db
+COUCHDB_NAME=keg_db
 ```
 
-The .env file should be placed under Kurl's top directory.
+The .env file should be placed under Keg's top directory.
 
 ### Front-End
 
@@ -56,10 +56,10 @@ $ npm install
 $ grunt
 ``` 
 
-## **Run Kurl**
+## **Run Keg**
 
 ```
 $ node app.js
 ``` 
 
-**Kurl is now running on http://localhost:3000**
+**Keg is now running on http://localhost:3000**

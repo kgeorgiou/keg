@@ -1,39 +1,43 @@
 <!DOCTYPE html>
-<html ng-app="kurl">
+<html ng-app="keg">
 <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kyriakos Georgiou">
-    <meta name="description" content="Kurl, URL Shortener.">
+    <meta name="description" content="Keg, URL Shortener.">
 
     <script src="bower_components/angularjs/angular.min.js" type="application/javascript"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc5/angular-material.min.css">
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc7/angular-material.min.js"></script>
+    <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
 
-    <script src="build/js/kurl.min.js" type="application/javascript"></script>
-    <link href="build/css/kurl.min.css" rel="stylesheet" type="text/css">
+    <script src="build/js/keg.min.js" type="application/javascript"></script>
+    <link href="build/css/keg.min.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body class="body-blue">
 
 <div ng-controller="ShorteningController" ng-cloak>
-    <h2 align="center">Kurl: An open <a href="//github.com/kgeorgiou/kurl" target="_blank">source</a> URL shortener.</h2>
+    <div id="logo-container">
+        <img id="keg-icon" height="75" width="100" src="vectors/keg.svg">
+    </div>
+    <h2 align="center">Keg: An open <a href="//github.com/kgeorgiou/kurl" target="_blank">source</a> URL shortener.
+    </h2>
+
     <div class="container-1">
-        <input name="longUrl" class="input-url-long" placeholder="Enter long URL" size="2048"
+        <input name="longUrl" id="input-url-long" placeholder="Enter long URL" size="2048"
                autocomplete="off" ng-model="longUrl" required>
-        <a class="shorten-button" ng-click="shortenUrl()">Shorten</a>
+        <a class="shorten-button btn-brown" ng-click="shortenUrl()">Serve</a>
     </div>
     <div class="container-2">
         <div class="expiry-string">{{getExpiryString()}}</div>
-        <i class="material-icons timer-icon" ng-class="expiry.flag ? 'timer-icon-off' : 'timer-icon-on'" ng-click="toggleExpiryFlag()">timer</i>
+        <i class="timer-icon btn-brown" ng-click="toggleExpiryFlag()">
+            <img height="32" width="32" ng-src="{{expiry.flag ? 'vectors/timer-white.svg' : 'vectors/timer-brown.svg'}}">
+        </i>
     </div>
     <div class="container-3" ng-show="expiry.flag">
         <div layout>
@@ -61,7 +65,10 @@
         </div>
     </div>
     <div class="container-4" ng-show="shortUrlExists()">
-        <input name="shortUrl" class="input-url-short" placeholder="" size="24" autocomplete="off"
+        <a href="{{shortUrl}}" target="_blank">
+            <img id="pint-icon" height="35" width="40" src="vectors/pint.svg">
+        </a>
+        <input name="shortUrl" id="input-url-short" placeholder="" size="24" autocomplete="off"
                ng-model="shortUrl">
     </div>
 </div>

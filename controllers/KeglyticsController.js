@@ -1,13 +1,12 @@
 var TrackingUtils = require('../utils/TrackingUtils'),
-    Couch         = require('../interfaces/CouchInterface.js'),
-    Utils         = require('../utils/Utils.js');
+    couchdb       = require('../interfaces/CouchInterface.js');
 
-var KurlyticsController = {
+var KeglyticsController = {
 
     recordHit: function (req, res) {
-        var id = Utils.createMetricsId(req.hash);
+        var id = couchdb.generateMetricsId(req.pint);
 
-        Couch.retrieveDocument(id, function (err, doc) {
+        couchdb.retrieveDocument(id, function (err, doc) {
 
             if (err) {
                 console.log(err);
@@ -22,7 +21,7 @@ var KurlyticsController = {
 
             doc.clicks = doc.clicks + 1;
 
-            Couch.updateDocument(doc, function (err, doc) {
+            couchdb.updateDocument(doc, function (err, doc) {
                 if (err) {
                     console.log(err);
                 }
@@ -31,7 +30,7 @@ var KurlyticsController = {
     },
 
     recordCreation: function (req, res) {
-        var doc_id = Utils.createMetricsId(req.hash);
+        var doc_id = couchdb.generateMetricsId(req.pint);
 
         if (!doc_id || doc_id.length == 0) {
             // TODO: Log error.
@@ -54,7 +53,7 @@ var KurlyticsController = {
             document['life_span'] = lifeSpan;
         }
 
-        Couch.insertDocument(doc_id, document, function (err, data) {
+        couchdb.insertDocument(doc_id, document, function (err, data) {
             if (err) {
                 console.log(err)
             }
@@ -63,4 +62,4 @@ var KurlyticsController = {
 
 };
 
-module.exports = KurlyticsController;
+module.exports = KeglyticsController;

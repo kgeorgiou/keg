@@ -1,5 +1,5 @@
 {
-  "name": "kurl-views",
+  "name": "keg-views",
   "version": "0.0.1",
   "description": "kurl front end",
   "main": "js/app.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kyriakos Georgiou",
-  "license": "ISC",
+  "license": "GPLv2",
   "devDependencies": {
     "grunt-cli": "^0.1.13",
     "grunt-contrib-concat": "^0.5.1",
