@@ -13,7 +13,7 @@ var keg_db = nano.db.use(db_name);
 keg_db.insert({
     doc_type: 'keg_meta',
     count: 0,
-    alphabet: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    alphabet: 'Q5lP9DO2yAIW1TFbu6gHNVahdREU0Sm7M8cJBpeCZioGLwYnvzf3krK4tsXqxj'
 }, 'keg:meta');
 
 var CouchInterface = {

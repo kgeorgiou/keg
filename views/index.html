@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kyriakos Georgiou">
     <meta name="description" content="Keg, URL Shortener.">
+    <title>Keg</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
     <script src="bower_components/angularjs/angular.min.js" type="application/javascript"></script>
 
@@ -23,9 +42,9 @@
 
 <div ng-controller="ShorteningController" ng-cloak>
     <div id="logo-container">
-        <img id="keg-icon" height="75" width="100" src="vectors/keg.svg">
+        <a href="/"><img id="keg-icon" height="75" width="100" src="vectors/keg.svg"></a>
     </div>
-    <h2 align="center">Keg: An open <a href="//github.com/kgeorgiou/kurl" target="_blank">source</a> URL shortener.
+    <h2 align="center">Keg: An open <a href="//github.com/kgeorgiou/keg" target="_blank">source</a> URL shortener.
     </h2>
 
     <div class="container-1">
@@ -36,7 +55,8 @@
     <div class="container-2">
         <div class="expiry-string">{{getExpiryString()}}</div>
         <i class="timer-icon btn-brown" ng-click="toggleExpiryFlag()">
-            <img height="32" width="32" ng-src="{{expiry.flag ? 'vectors/timer-white.svg' : 'vectors/timer-brown.svg'}}">
+            <img height="32" width="32"
+                 ng-src="{{expiry.flag ? 'vectors/timer-white.svg' : 'vectors/timer-brown.svg'}}">
         </i>
     </div>
     <div class="container-3" ng-show="expiry.flag">
@@ -71,11 +91,22 @@
         <input name="shortUrl" id="input-url-short" placeholder="" size="24" autocomplete="off"
                ng-model="shortUrl">
     </div>
+    <div class="foot-note">
+        <a href="//me.kg.gg" target="_blank">/* Author */</a>
+    </div>
 </div>
 
 </body>
 
 <footer>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+        ga('create', 'UA-42936084-3', 'auto');
+        ga('send', 'pageview');
+    </script>
 </footer>
 </html>

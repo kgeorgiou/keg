@@ -4,9 +4,40 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        ngconstant: {
+            options: {
+                space: '  ',
+                wrap: '"use strict";\n\n {%= __ngModule %}',
+                name: 'config'
+            },
+            development: {
+                options: {
+                    dest: 'scripts/config.js'
+                },
+                constants: {
+                    env: {
+                        name: 'development',
+                        apiEndpoint: 'http://localhost:3000/'
+                    }
+                }
+            },
+            production: {
+                options: {
+                    dest: 'scripts/config.js'
+                },
+                constants: {
+                    env: {
+                        name: 'production',
+                        apiEndpoint: 'http://kg.gg/'
+                    }
+                }
+            }
+        },
+
         concat: {
             js: {
                 src: [
+                    'scripts/config.js',
                     'app.js',
                     'controllers/*.js'
                 ],
@@ -55,6 +86,7 @@ module.exports = function (grunt) {
                 }
             }
         }
+
     });
 
     // 3. Where we tell Grunt we plan to use this plug-in.
@@ -62,8 +94,15 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-ng-constant');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'watch']);
+    grunt.registerTask('default', [
+        'ngconstant:development',
+        'concat',
+        'uglify',
+        'cssmin',
+        'watch'
+    ]);
 
 };

@@ -1,8 +1,6 @@
-var app = angular.module('keg', ['ngMaterial']);
+var app = angular.module('keg', ['config', 'ngMaterial']);
 
-var SERVER_URL = "http://localhost:3000";
-
-app.controller('ShorteningController', ['$scope', '$http', function ($scope, $http) {
+app.controller('ShorteningController', ['$scope', '$http', 'env', function ($scope, $http, env) {
 
     $scope.shortUrl = undefined;
     $scope.longUrl = undefined;
@@ -79,7 +77,7 @@ app.controller('ShorteningController', ['$scope', '$http', function ($scope, $ht
             kegObject['expires_at'] = lifespan + now;
         }
 
-        $http.post(SERVER_URL + '/keg', kegObject)
+        $http.post(env.apiEndpoint + 'keg', kegObject)
             .success(function (data) {
                 $scope.shortUrl = data.short_url;
             }).error(function (status, error) {
@@ -92,25 +90,21 @@ app.controller('ShorteningController', ['$scope', '$http', function ($scope, $ht
         return $scope.shortUrl && $scope.shortUrl.length > 0;
     };
 
+    /* Make sure minutes can get value of zero only if at least on of the other
+     time values are greater than zero to avoid having 0 minutes, 0 hours and 0 days */
     $scope.$watch('expiry.expMinutes', function (newVal, oldVal) {
-        /* Make sure minutes can get value of zero only if at least on of the other
-         time values are greater than zero to avoid having 0 minutes, 0 hours and 0 days */
         if (newVal == 0 && $scope.expiry.expHours == 0 && $scope.expiry.expDays == 0) {
             $scope.expiry.expMinutes = 1;
         }
     });
 
     $scope.$watch('expiry.expHours', function (newVal, oldVal) {
-        /* Make sure minutes can get value of zero only if at least on of the other
-         time values are greater than zero to avoid having 0 minutes, 0 hours and 0 days */
         if (newVal == 0 && $scope.expiry.expMinutes == 0 && $scope.expiry.expDays == 0) {
             $scope.expiry.expMinutes = 1;
         }
     });
 
     $scope.$watch('expiry.expDays', function (newVal, oldVal) {
-        /* Make sure minutes can get value of zero only if at least on of the other
-         time values are greater than zero to avoid having 0 minutes, 0 hours and 0 days */
         if (newVal == 0 && $scope.expiry.expMinutes == 0 && $scope.expiry.expHours == 0) {
             $scope.expiry.expMinutes = 1;
         }

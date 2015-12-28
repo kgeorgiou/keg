@@ -31,7 +31,7 @@ Sample .env file:
 NODE_ENV=development
 SERVER_URL=http://localhost:3000/
 SERVER_PORT=3000
-COUCHDB_URL=http://localhost:5984
+COUCHDB_URL=http://user:password@localhost:5984
 COUCHDB_NAME=keg_db
 ```
 
