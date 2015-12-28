@@ -68,7 +68,7 @@ app.controller('ShorteningController', ['$scope', '$http', 'env', function ($sco
         };
 
         var exp = $scope.expiry;
-        if (exp.flag && exp.expMinutes && exp.expHours && exp.expDays) {
+        if (exp.flag && (exp.expMinutes || exp.expHours || exp.expDays)) {
             var lifespan = exp.expMinutes * 60 * 1000
                 + exp.expHours * 60 * 60 * 1000
                 + exp.expDays * 24 * 60 * 60 * 1000;
