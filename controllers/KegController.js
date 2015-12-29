@@ -18,6 +18,15 @@ var KegController = {
             return;
         }
 
+        if (!Utils.isValidUrl(longUrl)) {
+            res.json({
+                status: 'error',
+                error: 'Not a valid URL.',
+                short_url: ''
+            });
+            return;
+        }
+
         var document = {
             doc_type: 'long_url',
             long_url: longUrl
@@ -41,7 +50,8 @@ var KegController = {
                 if (err) {
                     res.json({
                         status: 'error',
-                        error: err
+                        error: err,
+                        short_url: ''
                     });
                     return;
                 }

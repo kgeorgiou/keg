@@ -47,11 +47,12 @@
     <h2 align="center">Keg: An open <a href="//github.com/kgeorgiou/keg" target="_blank">source</a> URL shortener.
     </h2>
 
-    <div class="container-1">
-        <input name="longUrl" id="input-url-long" placeholder="Enter long URL" size="2048"
-               autocomplete="off" ng-model="longUrl" required>
-        <a class="shorten-button btn-brown" ng-click="shortenUrl()">Serve</a>
-    </div>
+    <form name="longUrlForm" class="container-1" ng-submit="shortenUrl()">
+        <input name="longUrl" id="input-url-long" ng-pattern="validUrlRegExp" placeholder="Enter long URL" size="2048"
+               autocomplete="off" ng-model="longUrl" ng-required>
+        <input value="SERVE" type="submit" class="shorten-button btn-brown"/>
+        <h5 align="center" ng-show="longUrlForm.$submitted && (longUrlForm.$invalid || longUrlForm.$pristine)">Invalid URL</h5>
+    </form>
     <div class="container-2">
         <div class="expiry-string">{{getExpiryString()}}</div>
         <i class="timer-icon btn-brown" ng-click="toggleExpiryFlag()">
