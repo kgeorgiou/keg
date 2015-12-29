@@ -234,16 +234,10 @@ h2 a:hover {
     }
 }
 
-form[name="longUrlForm"].ng-invalid.ng-submitted #input-url-long, form[name="longUrlForm"].ng-pristine.ng-submitted #input-url-long {
+form[name="longUrlForm"].ng-submitted #input-url-long.ng-invalid {
     border-top: 2px solid #E32A75;
     border-left: 2px solid #E32A75;
     border-bottom: 2px solid #E32A75;
-}
-
-form[name="longUrlForm"] h5 {
-    color: white;
-    margin: 5px 0 0 0;
-    font-size: 0.9em;
 }
 
 .btn-brown {
