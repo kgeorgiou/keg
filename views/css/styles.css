@@ -1,10 +1,5 @@
-@font-face {
-    font-family: bt_mono;
-    src: url("../../fonts/bt_mono_Regular.otf") format("opentype");
-}
-
 html, body {
-    font-family: Helvetica, sans-serif;
+    font-family: 'Bree Serif', sans-serif;
     height: 100%;
     padding: 0;
     overflow-x: hidden;
@@ -48,20 +43,11 @@ h2 a {
     color: white;
     padding: 0 0 1px 0;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    font-family: bt_mono, sans-serif;
-    font-size: 1.1em;
-    font-weight: bold;
 }
 
 h2 a:hover {
     text-decoration: none;
     border-bottom: 2px solid rgba(255, 255, 255, 1);
-}
-
-.container-1 .shorten-button {
-    padding: 10px 26px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 
 .container-1 .shorten-button {
@@ -83,6 +69,10 @@ h2 a:hover {
     outline: none;
     cursor: pointer;
     white-space: nowrap;
+    padding: 10px 26px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-family: 'Bree Serif', sans-serif;
 }
 
 .container-1 {
@@ -152,6 +142,7 @@ h2 a:hover {
     padding: 10px 155px 10px 30px;
     border-radius: 5px;
     background-clip: padding-box;
+    font-family: 'Bree Serif', sans-serif;
 }
 
 #input-url-short {
@@ -177,11 +168,12 @@ h2 a:hover {
     text-align: center;
     box-shadow: 0 2px 0 0 #AC6D03;
     font-size: 1.7em;
+    font-family: 'Bree Serif', sans-serif;
 }
 
 .md-body-1 {
     color: white;
-    font-weight: 600;
+    font-weight: normal;
 }
 
 .flex-container {
@@ -195,8 +187,8 @@ h2 a:hover {
 
 .expiry-string {
     color: white;
-    font-weight: 600;
-    font-size: 1em;
+    font-weight: normal;
+    font-size: 1.1em;
 }
 
 .timer-icon {

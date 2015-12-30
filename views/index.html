@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="keg">
 <head>
+    <title>Keg</title>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kyriakos Georgiou">
     <meta name="description" content="Keg, URL Shortener.">
-    <title>Keg</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
@@ -36,8 +36,6 @@
 
     <script src="build/js/keg.min.js" type="application/javascript"></script>
     <link href="build/css/keg.min.css" rel="stylesheet" type="text/css">
-</head>
-
 <body class="body-blue">
 
 <div ng-controller="ShorteningController" ng-cloak>
@@ -50,7 +48,7 @@
     <form name="longUrlForm" class="container-1" ng-submit="shortenUrl()">
         <input name="longUrl" id="input-url-long" ng-pattern="validUrlRegExp" placeholder="Enter long URL" size="2048"
                autocomplete="off" ng-model="longUrl" data-ng-required="true">
-        <input value="SERVE" type="submit" class="shorten-button btn-brown" formnovalidate/>
+        <input value="SERVE" type="submit" class="shorten-button btn-brown" onclick="ga('send', 'event', 'pint', 'serve')" formnovalidate/>
     </form>
     <div class="container-2">
         <div class="expiry-string">{{getExpiryString()}}</div>
@@ -85,7 +83,7 @@
         </div>
     </div>
     <div class="container-4" ng-show="shortUrlExists()">
-        <a href="{{shortUrl}}" target="_blank">
+        <a href="{{shortUrl}}" target="_blank" onclick="ga('send', 'event', 'pint', 'consume')">
             <img alt="Pint of beer icon" id="pint-icon" height="35" width="40" src="vectors/pint.svg">
         </a>
         <input name="shortUrl" id="input-url-short" placeholder="" size="24" autocomplete="off"
@@ -96,6 +94,7 @@
 </body>
 
 <footer>
+    <link href='//fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -113,4 +112,5 @@
         ga('send', 'pageview');
     </script>
 </footer>
+
 </html>
