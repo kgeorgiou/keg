@@ -63,3 +63,8 @@ $ node app.js
 ``` 
 
 **Keg is now running on http://localhost:3000**
+
+
+## Attributions
+
+*The keg and beer icons are freely available [here](http://freedesignfile.com/156946-flat-style-beer-icons-with-ribbon-vector/), under the [Creative Commons (Attribution 3.0)](https://creativecommons.org/licenses/by/3.0/) license.*
