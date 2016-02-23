@@ -36,6 +36,8 @@
 
     <script src="build/js/keg.min.js" type="application/javascript"></script>
     <link href="build/css/keg.min.css" rel="stylesheet" type="text/css">
+</head>
+
 <body class="body-blue">
 
 <div ng-controller="ShorteningController" ng-cloak>
@@ -48,7 +50,8 @@
     <form name="longUrlForm" class="container-1" ng-submit="shortenUrl()">
         <input name="longUrl" id="input-url-long" ng-pattern="validUrlRegExp" placeholder="Enter long URL" size="2048"
                autocomplete="off" ng-model="longUrl" data-ng-required="true">
-        <input value="SERVE" type="submit" class="shorten-button btn-brown" onclick="ga('send', 'event', 'pint', 'serve')" formnovalidate/>
+        <input value="SERVE" type="submit" class="shorten-button btn-brown"
+               onclick="ga('send', 'event', 'pint', 'serve')" formnovalidate/>
     </form>
     <div class="container-2">
         <div class="expiry-string">{{getExpiryString()}}</div>
