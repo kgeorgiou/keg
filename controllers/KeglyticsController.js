@@ -9,7 +9,8 @@ var KeglyticsController = {
         couchdb.retrieveDocument(id, function (err, doc) {
 
             if (err) {
-                console.log(err);
+                // TODO: Handle error
+                return;
             }
 
             var visitor_agent = TrackingUtils.getUserAgent(req);
@@ -23,7 +24,7 @@ var KeglyticsController = {
 
             couchdb.updateDocument(doc, function (err, doc) {
                 if (err) {
-                    console.log(err);
+                    // TODO: Handle error
                 }
             })
         });
@@ -55,7 +56,7 @@ var KeglyticsController = {
 
         couchdb.insertDocument(doc_id, document, function (err, data) {
             if (err) {
-                console.log(err)
+                // TODO: Handle error
             }
         });
     }

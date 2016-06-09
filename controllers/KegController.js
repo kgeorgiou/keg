@@ -50,7 +50,7 @@ var KegController = {
                 if (err) {
                     res.json({
                         status: 'error',
-                        error: err,
+                        error: 'Cannot insert document.',
                         short_url: ''
                     });
                     return;
@@ -77,7 +77,7 @@ var KegController = {
             if (err) {
                 res.json({
                     status: 'error',
-                    error: err
+                    error: 'Cannot retrieve document.'
                 });
                 return;
             }
