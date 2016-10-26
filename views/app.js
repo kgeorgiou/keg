@@ -90,7 +90,7 @@ app.controller('ShorteningController', ['$scope', '$http', 'env', function ($sco
         return $scope.shortUrl && $scope.shortUrl.length > 0;
     };
 
-    /* Make sure minutes can get value of zero only if at least on of the other
+    /* Make sure minutes can be zero only if at least one of the other
      time values are greater than zero to avoid having 0 minutes, 0 hours and 0 days */
     $scope.$watch('expiry.expMinutes', function (newVal, oldVal) {
         if (newVal == 0 && $scope.expiry.expHours == 0 && $scope.expiry.expDays == 0) {
