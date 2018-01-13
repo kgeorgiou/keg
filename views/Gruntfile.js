@@ -28,7 +28,7 @@ module.exports = function (grunt) {
                 constants: {
                     env: {
                         name: 'production',
-                        apiEndpoint: 'http://kg.gg/'
+                        apiEndpoint: 'https://kg.gg/'
                     }
                 }
             }
